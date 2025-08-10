@@ -22,12 +22,10 @@ const Counter: React.FC<CounterProps> = ({ type }) => {
   }, [type]);
 
   const checkDisabled = (direction: "smaller" | "bigger") => {
-    if (type !== PERCENT) return;
-
     const validatedValue = validateInput(value);
     if (direction === "smaller") {
       return !validatedValue || Number(validatedValue) <= 0;
-    } else {
+    } else if (type === PERCENT) {
       return Number(validatedValue) >= 100;
     }
   };
@@ -54,13 +52,17 @@ const Counter: React.FC<CounterProps> = ({ type }) => {
         disabled={isDisabledSmaller}
         onClick={() => {
           const newValue = Number(value) - 1;
-          if (type === PERCENT && newValue < 0) return;
-          setValue(newValue.toString());
-          setChangingValue(newValue.toString());
+          const validatedValue = validateInput(newValue.toString(), type);
+          if (type === PERCENT && Number(validatedValue) < 0) return;
+          if (validatedValue) {
+            setValue(validatedValue.toString());
+            setChangingValue(validatedValue);
+          }
         }}
       >
         -
       </button>
+
       <input
         data-testid="input"
         type="text"
