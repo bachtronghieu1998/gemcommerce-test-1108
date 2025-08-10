@@ -1,7 +1,7 @@
 import Counter from "./component/counter";
 import Toggle from "./component/toggle";
 import "./index.css";
-import React, { useState } from "react";
+import { useState } from "react";
 const App = () => {
   const [isToggled, setIsToggled] = useState(true);
   return (
