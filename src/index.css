@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+:root {
+  --bg-color-button: #212121;
+  --bg-color-button-hover: #3b3b3b;
+  --border-focus: #3c67ff;
+  --color-disabled: #aaaaaa;
+}
+
+.bg-button {
+  background-color: var(--bg-color-button);
+}
+
+.disabled {
+  color: var(--color-disabled);
+  cursor: auto;
+}
+
+.border-focus {
+  border-color: var(--border-focus);
+}

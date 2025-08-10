@@ -1,0 +1,11 @@
+.button-hover-custom:hover:not(.disabled) {
+  background-color: var(--bg-color-button-hover);
+}
+
+.input-focus {
+  border: 1px solid var(--border-focus);
+}
+
+.bg-button-hover {
+  background-color: var(--bg-color-button-hover);
+}
